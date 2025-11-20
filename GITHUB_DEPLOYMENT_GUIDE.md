@@ -20,22 +20,7 @@ This guide will help you deploy the Students Mentoring Portal to GitHub Pages.
 
 1. Open the extracted folder in your terminal
 
-2. Replace `package.json` with `package.github.json`:
-   ```bash
-   mv package.github.json package.json
-   ```
-
-3. Delete the old package-lock.json and regenerate it:
-   ```bash
-   rm package-lock.json
-   npm install
-   ```
-   This ensures the lockfile matches your new frontend-only dependencies.
-
-4. Edit `vite.config.github.ts` and replace `'your-repo-name'` with your actual repository name:
-   ```typescript
-   const REPO_NAME = 'nit-mentoring-portal'; // Change this!
-   ```
+That's it! The configuration automatically detects your repository name from GitHub.
 
 ### Step 3: Create GitHub Repository
 

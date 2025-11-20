@@ -33,6 +33,8 @@ jobs:
         run: npm install
         
       - name: Build with Vite
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
         run: npx vite build --config vite.config.github.ts
         
       - name: Setup Pages

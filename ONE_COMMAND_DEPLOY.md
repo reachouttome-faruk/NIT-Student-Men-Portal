@@ -32,20 +32,14 @@ git push -u origin main
    - Source: **GitHub Actions**
 3. Click **Save**
 
-### Step 5: Update Config
-1. In GitHub, edit file `vite.config.github.ts`
-2. Change line 6:
-   ```typescript
-   const REPO_NAME = 'YOUR_REPO'; // ← Put your repo name here
-   ```
-3. Commit the change
-
 ### Done! 🎉
 
 Your site will deploy automatically in 2-3 minutes at:
 ```
 https://YOUR_USERNAME.github.io/YOUR_REPO/
 ```
+
+**Repository name is auto-detected!** No manual configuration needed!
 
 ---
 

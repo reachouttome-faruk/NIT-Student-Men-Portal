@@ -3,11 +3,26 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 
 // GitHub Pages deployment configuration
-// Replace 'your-repo-name' with your actual GitHub repository name
-const REPO_NAME = 'your-repo-name';
+// Automatically detects repository name from GitHub Actions environment
+// or falls back to manual configuration
+function getBasePath() {
+  // In GitHub Actions, GITHUB_REPOSITORY is "username/repo-name"
+  if (process.env.GITHUB_REPOSITORY) {
+    const repoName = process.env.GITHUB_REPOSITORY.split('/')[1];
+    return `/${repoName}/`;
+  }
+  
+  // For local builds, you can set VITE_REPO_NAME
+  if (process.env.VITE_REPO_NAME) {
+    return `/${process.env.VITE_REPO_NAME}/`;
+  }
+  
+  // Fallback: change this if deploying manually
+  return '/nit-mentoring-portal/';
+}
 
 export default defineConfig({
-  base: `/${REPO_NAME}/`,
+  base: getBasePath(),
   plugins: [react()],
   resolve: {
     alias: {
@@ -20,5 +35,6 @@ export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
+    sourcemap: false,
   },
 });
